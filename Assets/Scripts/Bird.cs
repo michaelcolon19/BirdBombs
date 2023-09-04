@@ -7,10 +7,10 @@ public class Bird : MonoBehaviour
     [SerializeField] float _launchForce = 800;
     [SerializeField] float _maxDragDistance = 5;
 
-    private Vector2 _startPosition;
-    private Rigidbody2D _rigidbody2D;
-    private SpriteRenderer _spriteRenderer;
-    private LineRenderer _lineRenderer;
+    Vector2 _startPosition;
+    Rigidbody2D _rigidbody2D;
+    SpriteRenderer _spriteRenderer;
+    LineRenderer _lineRenderer;
 
     void Awake ()
     {
