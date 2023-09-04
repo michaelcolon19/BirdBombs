@@ -10,24 +10,25 @@ public class Bird : MonoBehaviour
     private Vector2 _startPosition;
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _spriteRenderer;
+    private LineRenderer _lineRenderer;
 
     void Awake ()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _lineRenderer = GetComponent<LineRenderer>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         _startPosition = _rigidbody2D.position;
         _rigidbody2D.isKinematic = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        _lineRenderer.SetPosition(0, _startPosition);
+        _lineRenderer.SetPosition(1, transform.position);
     }
 
     void OnCollisionEnter2D()
@@ -66,6 +67,7 @@ public class Bird : MonoBehaviour
     void OnMouseDown()
     {
         _spriteRenderer.color = Color.red;
+        _lineRenderer.enabled = true;
     }
 
     void OnMouseUp()
@@ -78,6 +80,6 @@ public class Bird : MonoBehaviour
         _rigidbody2D.AddForce(direction * _launchForce);
 
         _spriteRenderer.color = Color.white;
+        _lineRenderer.enabled = false;
     }
-
 }
